@@ -13,7 +13,7 @@ public class PlayerCollider : MonoBehaviour
 
     private void Awake()
     {
-        gameOver = GameOverDetecter.GetComponent<GameOver>();
+        gameOver = GameOverDetecter.GetComponent<GameOver>();    
     }
     private void OnCollisionEnter(Collision collision)
     {

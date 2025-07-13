@@ -73,3 +73,13 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Ignore font files
+*.ttf
+*.otf
+*.fon
+
+*.ttf.meta
+*.otf.meta
+*.fon.meta
+/Assets/TextMesh Pro/Fonts/*.asset
