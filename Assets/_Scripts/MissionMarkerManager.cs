@@ -9,6 +9,8 @@ public class MissionMarkerManager : MonoBehaviour
 {
     List<GameObject> m_Markers = new List<GameObject>();
 
+    public Transform dir_Arrow;
+
     private void Awake()
     {
         for(int i=0; i<transform.childCount; i++)
@@ -21,12 +23,13 @@ public class MissionMarkerManager : MonoBehaviour
         EnableFirstElement(); //최초 처음꺼 on
     }
 
-    public void Clear() //자식인 mission marker에서 호출
+    public void Clear() //자식인 mission marker에서 호출 , 다른 관련함수 모두 호출ㅊ
     {
         Destroy(m_Markers[0]);
         m_Markers.Remove(m_Markers[0]);
 
         EnableFirstElement();
+        dir_Arrow.GetComponent<DirectionArrow>().SetMarker();
     }
 
     private void EnableFirstElement()
