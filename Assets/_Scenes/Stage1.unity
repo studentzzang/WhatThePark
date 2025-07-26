@@ -1435,8 +1435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1971928387}
-  distance: 15
-  height: 17
+  distance: 13
+  height: 19
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,6 +1449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3fab3ba98512e41a16e65aa5520c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 1
+  stopDistance: 11
 --- !u!1001 &338391491
 PrefabInstance:
   m_ObjectHideFlags: 0

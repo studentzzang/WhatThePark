@@ -36,8 +36,7 @@ public class MissionMarkerManager : MonoBehaviour
         {
             EnableFirstElement();
             dir_Arrow.GetComponent<DirectionArrow>().SetMarker(m_Markers[0].transform);
-            cam.GetComponent<CameraGameOver>().TurnOffDefaultMoving();
-            cam.GetComponent<CameraGameOver>().CameraMoving();
+           
         }
         
     }
