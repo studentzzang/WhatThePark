@@ -10,7 +10,7 @@ using UnityEngine;
 public class GameOverManager : MonoBehaviour {
 
     private CameraGameOver cam_GameOver;
-
+    public float waitSec = 2f;
     void Awake()
     {
 
@@ -27,16 +27,18 @@ public class GameOverManager : MonoBehaviour {
 
     public void GameOver(Collision collision)
     {
-       
 
         SetHitPoint(collision.GetContact(0));
         StartCoroutine(cam_GameOver.MoveEaseIn());
         cam_GameOver.TurnOffDefaultMoving();
+
+        StartCoroutine(WaitForSec());
     }
     IEnumerator WaitForSec()
     {
-        yield return null;
+        yield return new WaitForSeconds(waitSec); 
 
+        PlayerRespawner.Instance.Respawn();
         //이후 리스폰
     }
 }

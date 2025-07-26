@@ -4,6 +4,7 @@
 /// </summary>
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MissionMarker : MonoBehaviour
@@ -12,6 +13,7 @@ public class MissionMarker : MonoBehaviour
     private float limitSec = 1;
     private float timer = 0;
 
+    public float playerRespawnRot = 0f;
     public GameObject[] delete_Obstacles; //삭제될 obstacles
 
     private void Awake()
@@ -38,12 +40,14 @@ public class MissionMarker : MonoBehaviour
 
         if(timer >= limitSec)
         {
-            GameOver();
+            CheckMarker();
             DeleteObstables();
         }
     }
-    void GameOver()
+    void CheckMarker()
     {
+        PlayerRespawner.Instance.SetTransform(transform.position, playerRespawnRot); // 로테이션값 각각 따로니까 manager에서 말고 직접 호출
+
         transform.parent.GetComponent<MissionMarkerManager>().Clear();
         GetComponent<BoxCollider>().enabled = false;
         timer = 0;

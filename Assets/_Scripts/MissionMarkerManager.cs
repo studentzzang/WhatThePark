@@ -11,7 +11,7 @@ public class MissionMarkerManager : MonoBehaviour
     List<GameObject> m_Markers = new List<GameObject>();
 
     public Transform dir_Arrow;
-    public Camera cam;
+    private Camera cam;
 
     private void Awake()
     {
@@ -29,6 +29,8 @@ public class MissionMarkerManager : MonoBehaviour
 
     public void Clear() //자식인 mission marker에서 호출 , !!다른 관련함수 모두 호출!!
     {
+        
+
         Destroy(m_Markers[0]);
         m_Markers.Remove(m_Markers[0]);
 
@@ -36,7 +38,6 @@ public class MissionMarkerManager : MonoBehaviour
         {
             EnableFirstElement();
             dir_Arrow.GetComponent<DirectionArrow>().SetMarker(m_Markers[0].transform);
-           
         }
         
     }
