@@ -1,5 +1,6 @@
 /// <summary>
 /// mission marker에 직접 부착
+/// 해당 체크포인트 도달해야 장애물 삭제하고 열리게 하기 기능
 /// </summary>
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ public class MissionMarker : MonoBehaviour
     private Renderer renderer;
     private float limitSec = 1;
     private float timer = 0;
+
+    public GameObject[] delete_Obstacles; //삭제될 obstacles
 
     private void Awake()
     {
@@ -35,10 +38,24 @@ public class MissionMarker : MonoBehaviour
 
         if(timer >= limitSec)
         {
-            transform.parent.GetComponent<MissionMarkerManager>().Clear();
-            GetComponent<BoxCollider>().enabled = false;
-            timer = 0;
+            GameOver();
+            DeleteObstables();
         }
     }
-    
+    void GameOver()
+    {
+        transform.parent.GetComponent<MissionMarkerManager>().Clear();
+        GetComponent<BoxCollider>().enabled = false;
+        timer = 0;
+    }
+    void DeleteObstables()
+    {
+        if(delete_Obstacles != null && delete_Obstacles.Length != 0)
+        {
+            foreach(GameObject obstacle in delete_Obstacles)
+            {
+                Destroy(obstacle);
+            }
+        }
+    }
 }
